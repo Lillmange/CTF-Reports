@@ -114,3 +114,28 @@ cp /incidents/suspicious.pcapng /var/www/html/files/ftp/
 Dowload the file from: 
 http://RHOST/files/ftp/suspicius.pcapng
 ```
+### Wireshark
+Start Wireshark and load the suspicius.pcapng <br>
+At line 152 we can se someone trying to access /home/lennie without permission. <br>
+If we the follow the log file we can see at line 173 that someone is trying to run sudo -l <br>
+![image](https://user-images.githubusercontent.com/93491173/216831507-48ef88e4-9e90-4ca4-8d9b-cfe44d21862c.png) <br>
+At line 177 we can se the password someone is trying to use.<br>
+![image](https://user-images.githubusercontent.com/93491173/216831624-3b487d43-220c-46ae-bf24-776e8cf99970.png)<br>
+Lets try that password on all users, one by one untill we find the user with that password.
+```
+www-data@startup:/$ su lennie
+su lennie
+Password: **********
+```
+### user.txt
+Now its time to check out that user.txt flag.
+```
+lennie@startup:/$ cd /home/lennie
+cd /home/lennie
+lennie@startup:~$ ls
+ls
+Documents  scripts  user.txt
+lennie@startup:~$ cat user.txt
+cat user.txt
+THM{**********}
+```
