@@ -161,7 +161,9 @@ cat /etc/passwd
 Use cat output and make a new passwd on LHOST.
 ```
 vi passwd 
-*change groupmembership
+change
+lennie:x:1002:1002::/home/lennie:
+to
 lennie:x:0:0::/home/lennie:/bin/bash
 [esc] 
 :wq
