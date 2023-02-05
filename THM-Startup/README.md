@@ -114,17 +114,24 @@ http://RHOST/files/ftp/suspicius.pcapng
 ```
 ### Wireshark
 Start Wireshark and load the suspicius.pcapng <br>
-At line 152 we can se someone trying to access /home/lennie without permission. <br>
-If we the follow the log file we can see at line 173 that someone is trying to run sudo -l <br>
+Look for some kind of terminal action. <br>
+If we the follow the TCP connection we can se exacly what that user did, and what password he tried to use<br>
 ![image](https://user-images.githubusercontent.com/93491173/216831507-48ef88e4-9e90-4ca4-8d9b-cfe44d21862c.png) <br>
-At line 177 we can se the password someone is trying to use.<br>
-![image](https://user-images.githubusercontent.com/93491173/216831624-3b487d43-220c-46ae-bf24-776e8cf99970.png)<br>
-Lets try that password on all users, one by one untill we find the user with that password.
+Right click that row, Follow, TCP connection.<br>
+Then we can se this:
+```
+www-data@startup:/home$ sudo -l
+sudo -l
+[sudo] password for www-data: ***********
+```
+It looks like someone is trying to elevate but are using the wrong command. I think someone is trying to access something in lennies home folder, lets try lennie and that password first.
+<br>
 ```
 www-data@startup:/$ su lennie
 su lennie
 Password: **********
 ```
+Great job, that worked fine.
 ### user.txt
 Now its time to check out that user.txt flag.
 ```
