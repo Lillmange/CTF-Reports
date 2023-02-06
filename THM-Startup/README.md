@@ -76,7 +76,7 @@ python -c 'import pty; pty.spawn("/bin/bash")'
 ### The secret recipe
 Read the file /recipe.txt
 ```
-www-data@startup:/$ 
+www-data@startup:/$ cat /recipe.txt
 cat /recipe.txt
 Someone asked what our main ingredient to our spice soup is today. 
 I figured I can't keep it a secret forever and told him it was ****.
