@@ -78,7 +78,8 @@ Read the file /recipe.txt
 ```
 www-data@startup:/$ 
 cat /recipe.txt
-Someone asked what our main ingredient to our spice soup is today. I figured <br> I can't keep it a secret forever and told him it was ****.
+Someone asked what our main ingredient to our spice soup is today. 
+I figured I can't keep it a secret forever and told him it was ****.
 ```
 **********
 ### Linpeas (finding a weakness)
